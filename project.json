@@ -1,5 +1,5 @@
 {
-  "root": "libs/data/operation",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/data/operation/src",
   "projectType": "library",
   "targets": {
@@ -22,9 +22,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/data/operation"],
+      "outputs": ["{workspaceRoot}/coverage/libs/data/operation"],
       "options": {
-        "jestConfig": "libs/data/operation/jest.config.js",
+        "jestConfig": "libs/data/operation/jest.config.ts",
         "passWithNoTests": true
       }
     }
