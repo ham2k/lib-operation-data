@@ -27,7 +27,7 @@ const COMMON_BANDS = ["160m", "80m", "60m", "40m", "30m", "20m", "17m", "15m", "
 const CONTEST_BANDS = ["160m", "80m", "40m", "20m", "15m", "10m"]
 
 function bandForFrequency(freq) {
-  return bandForExactFrequencyInMHz(freq) || bandForExactFrequencyInMHz(freq * 1000) || "other"
+  return bandForExactFrequencyInMHz(freq) ?? bandForExactFrequencyInMHz(freq * 1000) ?? "other"
 }
 
 function bandForExactFrequencyInMHz(freq) {
