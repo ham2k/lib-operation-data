@@ -25,7 +25,6 @@ const BANDS = [
 const HF_BANDS = ["160m", "80m", "60m", "40m", "30m", "20m", "17m", "15m", "12m", "10m"]
 const COMMON_BANDS = ["160m", "80m", "60m", "40m", "30m", "20m", "17m", "15m", "12m", "10m", "6m", "2m", "70cm"]
 const CONTEST_BANDS = ["160m", "80m", "40m", "20m", "15m", "10m"]
-const WARC_BANDS = ["30m", "17m", "12m"]
 
 function bandForFrequency(freq) {
   return bandForExactFrequencyInMHz(freq) ?? bandForExactFrequencyInMHz(freq * 1000) ?? "other"
@@ -60,6 +59,5 @@ module.exports = {
   HF_BANDS,
   COMMON_BANDS,
   CONTEST_BANDS,
-  WARC_BANDS,
   bandForFrequency,
 }
