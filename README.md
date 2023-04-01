@@ -1,11 +1,3 @@
-# data-operation
+# lib-operation-data
 
-This library was generated with [Nx](https://nx.dev).
-
-## Building
-
-Run `nx build data-operation` to build the library.
-
-## Running unit tests
-
-Run `nx test data-operation` to execute the unit tests via [Jest](https://jestjs.io).
+Basic data related to Amateur Radio operation, such as bands, modes, etc
