@@ -1,5 +1,8 @@
 {
   "name": "@ham2k/lib-operation-data",
-  "version": "0.0.1",
-  "type": "commonjs"
+  "version": "0.0.2",
+  "type": "commonjs",
+  "devDependencies": {
+    "standard": "^17.0.0"
+  }
 }
