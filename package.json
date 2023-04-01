@@ -1,7 +1,10 @@
 {
   "name": "@ham2k/lib-operation-data",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "commonjs",
+  "exports": {
+    ".": "./src/index.js"
+  },
   "devDependencies": {
     "standard": "^17.0.0"
   }
