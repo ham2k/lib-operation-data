@@ -1,5 +1,1 @@
-const bandExports = require('./lib/bands')
-
-module.exports = {
-  ...bandExports
-}
+export '*' from './lib/bands'

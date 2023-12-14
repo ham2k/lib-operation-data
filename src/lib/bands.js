@@ -1,4 +1,4 @@
-const BANDS = [
+export const BANDS = [
   '2200m',
   '630m',
   '160m',
@@ -22,11 +22,11 @@ const BANDS = [
   'other'
 ]
 
-const HF_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m']
-const COMMON_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m', '6m', '2m', '70cm']
-const CONTEST_BANDS = ['160m', '80m', '40m', '20m', '15m', '10m']
+export const HF_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m']
+export const COMMON_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m', '6m', '2m', '70cm']
+export const CONTEST_BANDS = ['160m', '80m', '40m', '20m', '15m', '10m']
 
-function bandForFrequency (freq) {
+export function bandForFrequency (freq) {
   return bandForExactFrequencyInMHz(freq) ?? bandForExactFrequencyInMHz(freq * 1000) ?? 'other'
 }
 
@@ -52,12 +52,4 @@ function bandForExactFrequencyInMHz (freq) {
   else if (freq >= 1200000 && freq <= 1400000) return '23cm'
   else if (freq >= 2300000 && freq <= 2400000) return '13cm'
   else return undefined
-}
-
-module.exports = {
-  BANDS,
-  HF_BANDS,
-  COMMON_BANDS,
-  CONTEST_BANDS,
-  bandForFrequency
 }
