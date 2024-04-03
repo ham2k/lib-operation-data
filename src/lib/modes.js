@@ -15,29 +15,29 @@ export const MAIN_MODES = [
 ]
 
 export const POPULAR_MODES = [
-  'AM',
   'CW',
-  'C4FM',
+  'SSB',
+  'USB',
+  'LSB',
+  'FM',
+  'AM',
+  'FT8',
+  'FT4',
   'DIGITALVOICE',
+  'C4FM',
   'DMR',
   'DSTAR',
-  'DYNAMIC'
-  'FM',
   'FREEDV',
-  'FT4',
-  'FT8',
+  'M17',
+  'DYNAMIC'
   'HELL'
   'JT9',
-  'LSB',
-  'M17',
   'MFSK',
   'MSK144',
   'OLIVIA',
   'PKT',
   'PSK',
-  'SSB',
   'SSTV',
-  'USB',
   'WSPR',
 ]
 
