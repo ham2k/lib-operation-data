@@ -37,7 +37,7 @@ export const UHF_BANDS = ['70cm', '33cm', '23cm', '13cm']
 export const SHF_BANDS = ['9cm', '6cm', '3cm', '12mm']
 export const EHF_BANDS = ['6mm', '4mm', '2mm', '2.5mm', '1mm']
 
-export const COMMON_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m', '6m', '2m', '70cm']
+export const POPULAR_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m', '6m', '2m', '70cm']
 export const CONTEST_BANDS = ['160m', '80m', '40m', '20m', '15m', '10m']
 
 export function bandForFrequency (freq) {
