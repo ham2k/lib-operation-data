@@ -23,6 +23,7 @@ export const POPULAR_MODES = [
   'AM',
   'FT8',
   'FT4',
+  'RTTY',
   'DIGITALVOICE',
   'C4FM',
   'DMR',
