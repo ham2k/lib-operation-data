@@ -29,7 +29,7 @@ export const POPULAR_MODES = [
   'DSTAR',
   'FREEDV',
   'M17',
-  'DYNAMIC'
+  'DYNAMIC',
   'HELL'
   'JT9',
   'MFSK',
