@@ -19,10 +19,24 @@ export const BANDS = [
   '33cm',
   '23cm',
   '13cm',
+  '9cm',
+  '6cm',
+  '3cm',
+  '12mm',
+  '6mm',
+  '4mm',
+  '2.5mm',
+  '2mm',
+  '1mm',
   'other'
 ]
 
 export const HF_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m']
+export const VHF_BANDS = ['6m', '4m', '2m', '125cm']
+export const UHF_BANDS = ['70cm', '33cm', '23cm', '13cm']
+export const SHF_BANDS = ['9cm', '6cm', '3cm', '12mm']
+export const EHF_BANDS = ['6mm', '4mm', '2mm', '2.5mm', '1mm']
+
 export const COMMON_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m', '6m', '2m', '70cm']
 export const CONTEST_BANDS = ['160m', '80m', '40m', '20m', '15m', '10m']
 
@@ -49,7 +63,100 @@ function bandForExactFrequencyInMHz (freq) {
   else if (freq >= 219000 && freq <= 230000) return '125cm'
   else if (freq >= 400000 && freq <= 460000) return '70cm'
   else if (freq >= 900000 && freq <= 930000) return '33cm'
-  else if (freq >= 1200000 && freq <= 1400000) return '23cm'
-  else if (freq >= 2300000 && freq <= 2400000) return '13cm'
+  else if (freq >= 1180000 && freq <= 1420000) return '23cm'
+  else if (freq >= 2300000 && freq <= 2450000) return '13cm'
+  else if (freq >= 3290000 && freq <= 3510000) return '9cm'
+  else if (freq >= 5640000 && freq <= 5926000) return '6cm'
+  else if (freq >= 10000000 && freq <= 10500000) return '3cm'
+  else if (freq >= 24000000 && freq <= 24250000) return '12mm'
+  else if (freq >= 47000000 && freq <= 47200000) return '6mm'
+  else if (freq >= 75000000 && freq <= 81000000) return '4mm'
+  else if (freq >= 122250000 && freq <= 123000000) return '2.5mm'
+  else if (freq >= 134000000 && freq <= 141000000) return '2mm'
+  else if (freq >= 241000000 && freq <= 250000000) return '1mm'
+  else return undefined
+}
+
+export function frequencyForBand(band, mode) {
+  if (band === '2200m') return 135.7
+  else if (band === '630m') return 472
+  else if (band === '160m') {
+    if (mode === 'FT8' || mode === 'FT4') return 1840
+    else return 1800
+  }
+  else if (band === '80m') {
+    if (mode === 'SSB' || mode === 'LSB') return 3800
+    else if (mode === 'FT8') return 3573
+    else if (mode === 'FT4') return 3575
+    else return 3000
+  }
+  else if (band === '60m') {
+    if (mode === 'FT8') return 5357
+    else return 5330
+  }
+  else if (band === '40m') {
+    if (mode === 'SSB' || mode === 'LSB') return 7175
+    else if (mode === 'FT8') return 7074
+    else if (mode === 'FT4') return 7047.5
+    else return 7000
+  }
+  else if (band === '30m') {
+    if (mode === 'FT8') return 10136
+    else if (mode === 'FT4') return 10140
+    else return 10100
+  }
+  else if (band === '20m') {
+    if (mode === 'SSB' || mode === 'USB') return 14225
+    else if (mode === 'FT8') return 14074
+    else if (mode === 'FT4') return 14080
+    else return 14000
+  }
+  else if (band === '17m') {
+    if (mode === 'SSB' || mode === 'USB') return 18110
+    else if (mode === 'FT8') return 18100
+    else if (mode === 'FT4') return 18104
+    else return 18068
+  }
+  else if (band === '15m') {
+    if (mode === 'SSB' || mode === 'USB') return 21275
+    else if (mode === 'FT8') return 21074
+    else if (mode === 'FT4') return 21140
+    else return 21000
+  }
+  else if (band === '12m') {
+    if (mode === 'SSB' || mode === 'USB') return 24930
+    else if (mode === 'FT8') return 24915
+    else if (mode === 'FT4') return 24919
+    else return 24890
+  }
+  else if (band === '10m') {
+    if (mode === 'SSB' || mode === 'USB') return 28300
+    else if (mode === 'FM' || mode === 'AM') return 28500
+    else if (mode === 'FT8') return 28074
+    else if (mode === 'FT4') return 28180
+    else return 28000
+  }
+  else if (band === '6m') {
+    if (mode === 'SSB' || mode === 'USB') return 50125
+    else if (mode === 'FT8') return 50313
+    else if (mode === 'FT4') return 50318
+    else return 50000
+  }
+  else if (band === '4m') return 70090
+  else if (band === '2m') return 145400
+  else if (band === '125cm') return 222000
+  else if (band === '70cm') return 420000
+  else if (band === '33cm') return 902000
+  else if (band === '23cm') return 1240000
+  else if (band === '13cm') return 2300000
+  else if (band === '9cm') return 3300000
+  else if (band === '6cm') return 5650000
+  else if (band === '3cm') return 10000000
+  else if (band === '12mm') return 24000000
+  else if (band === '6mm') return 47000000
+  else if (band === '4mm') return 75500000
+  else if (band === '2.5mm') return 122500000
+  else if (band === '2mm') return 134000000
+  else if (band === '1mm') return 241000000
   else return undefined
 }
