@@ -30,7 +30,7 @@ export const POPULAR_MODES = [
   'FREEDV',
   'M17',
   'DYNAMIC',
-  'HELL'
+  'HELL',
   'JT9',
   'MFSK',
   'MSK144',
@@ -121,6 +121,8 @@ Object.keys(ADIF_SUBMODES).forEach(mode => {
     ADIF_MODE_FOR_SUBMODE[submode] = mode
   })
 })
+
+export const ADIF_MODES_AND_SUBMODES = ADIF_MODES.concat(Object.values(ADIF_MODE_FOR_SUBMODE)).flat().sort()
 
 export function adifModeAndSubmodeForMode(mode) {
   if (ADIF_MODE_FOR_SUBMODE[mode]) {
