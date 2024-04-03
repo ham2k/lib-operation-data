@@ -122,7 +122,7 @@ Object.keys(ADIF_SUBMODES).forEach(mode => {
   })
 })
 
-export const ADIF_MODES_AND_SUBMODES = ADIF_MODES.concat(Object.values(ADIF_SUBMODES)).flat().sort()
+export const ADIF_MODES_AND_SUBMODES = [... new Set(ADIF_MODES.concat(Object.values(ADIF_SUBMODES)).flat())].sort()
 
 export function adifModeAndSubmodeForMode(mode) {
   if (ADIF_MODE_FOR_SUBMODE[mode]) {
