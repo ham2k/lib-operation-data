@@ -132,3 +132,15 @@ export function adifModeAndSubmodeForMode(mode) {
     return [mode]
   }
 }
+
+export function superModeForMode(mode) {
+  if (ADIF_MODE_FOR_SUBMODE[mode]) mode = ADIF_MODE_FOR_SUBMODE[mode]
+
+  if (mode === 'CW') {
+    return 'CW'
+  } else if (mode === 'SSB' || mode === 'FM' || mode === 'AM' || mode === 'DIGITALVOICE') {
+    return 'PHONE'
+  } else {
+    return 'DATA'
+  }
+}
