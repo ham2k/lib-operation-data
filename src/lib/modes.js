@@ -138,7 +138,7 @@ export function superModeForMode(mode) {
 
   if (mode === 'CW') {
     return 'CW'
-  } else if (mode === 'SSB' || mode === 'FM' || mode === 'AM' || mode === 'DIGITALVOICE') {
+  } else if (mode === 'SSB' || mode === 'FM' || mode === 'AM' || mode === 'DIGITALVOICE' || mode === 'PHONE') {
     return 'PHONE'
   } else {
     return 'DATA'
