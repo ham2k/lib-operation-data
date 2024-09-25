@@ -1,12 +1,19 @@
 {
   "name": "@ham2k/lib-operation-data",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "type": "module",
   "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js"
   },
   "devDependencies": {
+    "jest": "~29",
     "standard": "^17.0.0"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
+  },
+  "standard": {
+    "env": [ "jest" ]
   }
 }

@@ -1,3 +1,5 @@
+import BandPlans from '../data/bandPlans.json'
+
 export const SUPER_MODES = [
   'CW',
   'PHONE',
@@ -143,4 +145,36 @@ export function superModeForMode(mode) {
   } else {
     return 'DATA'
   }
+}
+
+const AllSegments = Object.keys(BandPlans.bands).reduce((segments, band) => {
+  return segments.concat(
+    BandPlans.bands[band].segments.map(segment => (
+      {
+        ...segment,
+        band,
+        width: segment.mhz[1] - segment.mhz[0],
+        regions: (segment.regions || []).reduce((regions, region) => { regions[region] = true; return regions }, {}),
+        entities: (segment.entities || []).reduce((entities, entity) => { entities[entity] = true; return entities }, {}),
+        countries: (segment.countries || []).reduce((countries, country) => { countries[country] = true; return countries }, {}),
+      }
+    ))
+  )
+}, [])
+
+export function modeForFrequency(frequency, { region, country, entity } = {}) {
+  const segments = AllSegments.filter(segment => segment.mhz[0] <= frequency && segment.mhz[1] >= frequency)
+  const sortedSegments = segments.sort((a, b) => {
+    if (entity && !a.entities[entity] && b.entities[entity]) return 1
+    if (entity && a.entities[entity] && !b.entities[entity]) return -1
+
+    if (country && !a.countries[country] && b.countries[country]) return 1
+    if (country && a.countries[country] && !b.countries[country]) return -1
+
+    if (region && !a.regions[region] && b.regions[region]) return 1
+    if (region && a.regions[region] && !b.regions[region]) return -1
+
+    return a.width - b.width
+  })
+  return sortedSegments[0]?.mode
 }
