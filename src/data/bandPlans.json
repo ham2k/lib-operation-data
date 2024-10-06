@@ -11,18 +11,18 @@
         { "name": "CW", "mhz": [1800, 1843], "mode": "CW" },
         { "name": "Data", "mhz": [1800, 1810], "mode": "RTTY" },
         { "name": "FT8", "mhz": [1840, 1843], "mode": "FT8" },
-        { "name": "Phone", "mhz": [1843, 2000], "mode": "LSB" }
+        { "name": "Phone", "mhz": [1843, 2000], "mode": "SSB", "submode": "LSB" }
       ]
     },
     "80m": {
       "mhz": [3500, 3800],
       "segments": [
         { "name": "CW", "mhz": [3500, 3600], "mode": "CW" },
-        { "name": "Phone", "mhz": [3535, 3800], "mode": "LSB", "regions": [ 3 ] },
+        { "name": "Phone", "mhz": [3535, 3800], "mode": "SSB", "submode": "LSB", "regions": [ 3 ] },
         { "name": "FT8", "mhz": [3568, 3571], "mode": "FT8", "regions": [ 3 ] },
         { "name": "Data", "mhz": [3570, 3600], "mode": "RTTY" },
         { "name": "FT8", "mhz": [3573, 3576], "mode": "FT8" },
-        { "name": "Phone", "mhz": [3600, 4000], "mode": "LSB" }
+        { "name": "Phone", "mhz": [3600, 4000], "mode": "SSB", "submode": "LSB" }
       ]
     },
     "60m": {
@@ -41,10 +41,10 @@
         { "name": "CW", "mhz": [7000, 7060], "mode": "CW" },
         { "name": "CW", "mhz": [7000, 7125], "mode": "CW", "countries": [ "US" ] },
         { "name": "FT4", "mhz": [7047.5, 7050.5], "mode": "FT4" },
-        { "name": "Phone", "mhz": [7060, 7300], "mode": "LSB" },
+        { "name": "Phone", "mhz": [7060, 7300], "mode": "SSB", "submode": "LSB" },
         { "name": "FT8", "mhz": [7074, 7077], "mode": "FT8" },
         { "name": "Data", "mhz": [7080, 7125], "mode": "RTTY" },
-        { "name": "Phone", "mhz": [7125, 7300], "mode": "LSB", "countries": [ "US" ] }
+        { "name": "Phone", "mhz": [7125, 7300], "mode": "SSB", "submode": "LSB", "countries": [ "US" ] }
       ]
     },
     "30m": {
@@ -64,8 +64,8 @@
         { "name": "Data", "mhz": [14070, 14095], "mode": "RTTY" },
         { "name": "FT8", "mhz": [14074, 14077], "mode": "FT8" },
         { "name": "FT4", "mhz": [14080, 14083], "mode": "FT4" },
-        { "name": "Phone", "mhz": [14112, 14350], "mode": "USB", "regions": [ 2 ] },
-        { "name": "Phone", "mhz": [14150, 14350], "mode": "USB", "countries": [ "US" ] }
+        { "name": "Phone", "mhz": [14112, 14350], "mode": "SSB", "submode": "USB", "regions": [ 2 ] },
+        { "name": "Phone", "mhz": [14150, 14350], "mode": "SSB", "submode": "USB", "countries": [ "US" ] }
       ]
     },
     "17m": {
@@ -75,7 +75,7 @@
         { "name": "Data", "mhz": [18100, 18105], "mode": "RTTY" },
         { "name": "FT8", "mhz": [18100, 18103], "mode": "FT8" },
         { "name": "FT4", "mhz": [18104, 18107], "mode": "FT4" },
-        { "name": "Phone", "mhz": [18110, 18168], "mode": "USB" }
+        { "name": "Phone", "mhz": [18110, 18168], "mode": "SSB", "submode": "USB" }
       ]
     },
     "15m": {
@@ -85,7 +85,7 @@
         { "name": "Data", "mhz": [21070, 21095], "mode": "RTTY" },
         { "name": "FT8", "mhz": [21074, 21077], "mode": "FT8" },
         { "name": "FT4", "mhz": [21140, 21143], "mode": "FT4" },
-        { "name": "Phone", "mhz": [21150, 21450], "mode": "USB" }
+        { "name": "Phone", "mhz": [21150, 21450], "mode": "SSB", "submode": "USB" }
       ]
     },
     "12m": {
@@ -95,7 +95,7 @@
         { "name": "FT8", "mhz": [24915, 24918], "mode": "FT8" },
         { "name": "FT4", "mhz": [24919, 23922], "mode": "FT4" },
         { "name": "Data", "mhz": [24920, 24925], "mode": "RTTY" },
-        { "name": "Phone", "mhz": [24930, 24990], "mode": "USB" }
+        { "name": "Phone", "mhz": [24930, 24990], "mode": "SSB", "submode": "USB" }
       ]
     },
     "10m": {
@@ -106,7 +106,7 @@
         { "name": "FT8", "mhz": [28074, 28077], "mode": "FT8" },
         { "name": "FT4", "mhz": [28180, 28183], "mode": "FT4" },
         { "name": "Beacons", "mhz": [28190, 28300] },
-        { "name": "Phone SSB", "mhz": [28300, 28500], "mode": "USB" },
+        { "name": "Phone SSB", "mhz": [28300, 29000], "mode": "SSB", "submode": "USB" },
         { "name": "AM", "mhz": [29000, 29200], "mode": "AM" },
         { "name": "Satellite", "mhz": [29300, 29520] },
         { "name": "Repeater Uplinks", "mhz": [29520, 29590] },
@@ -119,7 +119,7 @@
       "segments": [
         { "name": "CW", "mhz": [50000, 50150], "mode": "CW" },
         { "name": "Data", "mhz": [50090, 50130], "mode": "RTTY" },
-        { "name": "Phone", "mhz": [50150, 50600], "mode": "USB" },
+        { "name": "Phone", "mhz": [50150, 50600], "mode": "SSB", "submode": "USB" },
         { "name": "AM", "mhz": [50150, 54000], "mode": "AM" },
         { "name": "FT8", "mhz": [50313, 50316], "mode": "FT8" },
         { "name": "FT4", "mhz": [50318, 50321], "mode": "FT4" },
@@ -133,7 +133,7 @@
         { "name": "Data", "mhz": [144100, 144200], "mode": "RTTY" },
         { "name": "FT8", "mhz": [144174, 144177], "mode": "FT8" },
         { "name": "FT8", "mhz": [144170, 144173], "mode": "FT4" },
-        { "name": "Phone", "mhz": [144200, 144275], "mode": "LSB" },
+        { "name": "Phone", "mhz": [144200, 144275], "mode": "SSB", "submode": "LSB" },
         { "name": "FM", "mhz": [144300, 148000], "mode": "FM" }
       ]
     }
