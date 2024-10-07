@@ -61,10 +61,11 @@
       "segments": [
         { "name": "CW", "mhz": [14000, 14101], "mode": "CW", "regions": [ 2 ] },
         { "name": "CW", "mhz": [14000, 14150], "mode": "CW" },
+        { "name": "CW", "mhz": [14000, 14070], "mode": "CW", "regions": [ 1 ] },
         { "name": "Data", "mhz": [14070, 14095], "mode": "RTTY" },
         { "name": "FT8", "mhz": [14074, 14077], "mode": "FT8" },
         { "name": "FT4", "mhz": [14080, 14083], "mode": "FT4" },
-        { "name": "Phone", "mhz": [14112, 14350], "mode": "SSB", "submode": "USB", "regions": [ 2 ] },
+        { "name": "Phone", "mhz": [14112, 14350], "mode": "SSB", "submode": "USB", "regions": [ 1, 2 ] },
         { "name": "Phone", "mhz": [14150, 14350], "mode": "SSB", "submode": "USB", "countries": [ "US" ] }
       ]
     },
