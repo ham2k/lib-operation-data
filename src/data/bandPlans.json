@@ -134,8 +134,26 @@
         { "name": "Data", "mhz": [144100, 144200], "mode": "RTTY" },
         { "name": "FT8", "mhz": [144174, 144177], "mode": "FT8" },
         { "name": "FT8", "mhz": [144170, 144173], "mode": "FT4" },
-        { "name": "Phone", "mhz": [144200, 144275], "mode": "SSB", "submode": "LSB" },
+        { "name": "Phone", "mhz": [144200, 144275], "mode": "SSB", "submode": "USB" },
         { "name": "FM", "mhz": [144300, 148000], "mode": "FM" }
+      ]
+    },
+    "1.25m": {
+      "mhz": [222000, 225000],
+      "segments": [
+        { "name": "FM", "mhz": [222200, 225000], "mode": "FM" }
+      ]
+    },
+    "70cm": {
+      "mhz": [420000, 450000],
+      "segments": [
+        { "name": "FM", "mhz": [420000, 450000], "mode": "FM" }
+      ]
+    },
+    "33cm": {
+      "mhz": [902000, 928000],
+      "segments": [
+        { "name": "FM", "mhz": [902000, 928000], "mode": "FM" }
       ]
     }
   }
