@@ -26,13 +26,18 @@
       ]
     },
     "60m": {
-      "mhz": [5330.5, 3406.5],
+      "mhz": [5250, 5450],
       "segments": [
         { "name": "60m Channel 1", "mhz": [5330.5, 5333.5] },
         { "name": "60m Channel 2", "mhz": [5346.5, 5349.5] },
         { "name": "60m Channel 3", "mhz": [5357, 5360], "mode": "FT8" },
         { "name": "60m Channel 4", "mhz": [5371.5, 5373.5] },
-        { "name": "60m Channel 5", "mhz": [5403.5, 5406.5] }
+        { "name": "60m Channel 5", "mhz": [5403.5, 5406.5] },
+        { "name":"Any mode", "mhz": [5250, 5305], "countries": [ "NO","DK" ]},
+        { "name":"CW", "mhz": [5305, 5315], "mode":"CW", "countries": [ "NO","DK" ]},
+        { "name":"Phone", "mhz": [5315, 5357], "mode":"SSB", "submode":"USB", "countries": [ "NO","DK" ]},
+        { "name":"Phone", "mhz": [5360, 5410], "mode":"SSB", "submode":"USB", "countries": [ "NO" ]},
+        { "name":"Phone", "mhz": [5360, 5450], "mode":"SSB", "submode":"USB", "countries": [ "DK" ]}
       ]
     },
     "40m": {
