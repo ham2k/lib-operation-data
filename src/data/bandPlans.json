@@ -39,12 +39,12 @@
       "mhz": [7000, 7300],
       "segments": [
         { "name": "CW", "mhz": [7000, 7060], "mode": "CW" },
-        { "name": "CW", "mhz": [7000, 7125], "mode": "CW", "countries": [ "US" ] },
+        { "name": "CW", "mhz": [7000, 7125], "mode": "CW", "countries": [ "us" ] },
         { "name": "FT4", "mhz": [7047.5, 7050.5], "mode": "FT4" },
         { "name": "Phone", "mhz": [7060, 7300], "mode": "SSB", "submode": "LSB" },
         { "name": "FT8", "mhz": [7074, 7077], "mode": "FT8" },
         { "name": "Data", "mhz": [7080, 7125], "mode": "RTTY" },
-        { "name": "Phone", "mhz": [7125, 7300], "mode": "SSB", "submode": "LSB", "countries": [ "US" ] }
+        { "name": "Phone", "mhz": [7125, 7300], "mode": "SSB", "submode": "LSB", "countries": [ "us" ] }
       ]
     },
     "30m": {
@@ -54,7 +54,7 @@
         { "name": "Data", "mhz": [10130, 10140], "mode": "RTTY" },
         { "name": "FT8", "mhz": [10136, 10139], "mode": "FT8" },
         { "name": "FT4", "mhz": [10140, 10143], "mode": "FT4" },
-        { "name": "Australia", "mhz": [10100, 10150], "mode": null, "countries": ["AU"] }
+        { "name": "Australia", "mhz": [10100, 10150], "mode": null, "countries": ["au", "za"] }
       ]
     },
     "20m": {
@@ -67,7 +67,7 @@
         { "name": "FT8", "mhz": [14074, 14077], "mode": "FT8" },
         { "name": "FT4", "mhz": [14080, 14083], "mode": "FT4" },
         { "name": "Phone", "mhz": [14112, 14350], "mode": "SSB", "submode": "USB", "regions": [ 1, 2 ] },
-        { "name": "Phone", "mhz": [14150, 14350], "mode": "SSB", "submode": "USB", "countries": [ "US" ] }
+        { "name": "Phone", "mhz": [14150, 14350], "mode": "SSB", "submode": "USB", "countries": [ "us" ] }
       ]
     },
     "17m": {

@@ -1,6 +1,6 @@
 {
   "name": "@ham2k/lib-operation-data",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "type": "module",
   "main": "./src/index.js",
   "exports": {
