@@ -7,8 +7,8 @@ describe('modeForFrequency', () => {
     expect(modeForFrequency(14074)).toEqual('FT8')
 
     expect(modeForFrequency(14140)).toEqual('CW')
-    expect(modeForFrequency(14140, { region: 2 })).toEqual('USB')
-    expect(modeForFrequency(14140, { entity: 'K' })).toEqual('CW')
+    expect(modeForFrequency(14140, { ituRegion: 2 })).toEqual('USB')
+    expect(modeForFrequency(14140, { entityPrefix: 'K' })).toEqual('CW')
 
   })
 })
