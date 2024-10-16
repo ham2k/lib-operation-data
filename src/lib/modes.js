@@ -165,14 +165,14 @@ const AllSegments = Object.keys(BandPlans.bands).reduce((segments, band) => {
 export function modeForFrequency(frequency, { ituRegion, countryCode, entityPrefix } = {}) {
   const segments = AllSegments.filter(segment => segment.mhz[0] <= frequency && segment.mhz[1] >= frequency)
   const sortedSegments = segments.sort((a, b) => {
-    if (entity && !a.entities[entityPrefix] && b.entities[entityPrefix]) return 1
-    if (entity && a.entities[entityPrefix] && !b.entities[entityPrefix]) return -1
+    if (entityPrefix && !a.entities[entityPrefix] && b.entities[entityPrefix]) return 1
+    if (entityPrefix && a.entities[entityPrefix] && !b.entities[entityPrefix]) return -1
 
-    if (country && !a.countries[countryCode] && b.countries[countryCode]) return 1
-    if (country && a.countries[countryCode] && !b.countries[countryCode]) return -1
+    if (countryCode && !a.countries[countryCode] && b.countries[countryCode]) return 1
+    if (countryCode && a.countries[countryCode] && !b.countries[countryCode]) return -1
 
-    if (region && !a.regions[ituRegion] && b.regions[ituRegion]) return 1
-    if (region && a.regions[ituRegion] && !b.regions[ituRegion]) return -1
+    if (ituRegion && !a.regions[ituRegion] && b.regions[ituRegion]) return 1
+    if (ituRegion && a.regions[ituRegion] && !b.regions[ituRegion]) return -1
 
     return a.width - b.width
   })
