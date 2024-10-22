@@ -43,7 +43,7 @@
         { "name": "FT4", "mhz": [7047.5, 7050.5], "mode": "FT4" },
         { "name": "Phone", "mhz": [7060, 7300], "mode": "SSB", "submode": "LSB" },
         { "name": "FT8", "mhz": [7074, 7077], "mode": "FT8" },
-        { "name": "Data", "mhz": [7080, 7125], "mode": "RTTY" },
+        { "name": "Data", "mhz": [7080, 7125], "mode": "RTTY", "countries": [ "us" ] },
         { "name": "Phone", "mhz": [7125, 7300], "mode": "SSB", "submode": "LSB", "countries": [ "us" ] }
       ]
     },
