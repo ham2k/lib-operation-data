@@ -57,7 +57,7 @@
         { "name": "Data", "mhz": [10130, 10140], "mode": "RTTY" },
         { "name": "FT8", "mhz": [10136, 10139], "mode": "FT8" },
         { "name": "FT4", "mhz": [10140, 10143], "mode": "FT4" },
-        { "name": "Australia", "mhz": [10100, 10150], "mode": null, "countries": ["au", "za"] }
+        { "name": "Countries with no plan on 30m", "mhz": [10100, 10150], "mode": null, "countries": ["au", "za"] }
       ]
     },
     "20m": {

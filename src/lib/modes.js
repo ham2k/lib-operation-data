@@ -168,7 +168,8 @@ export function modeForFrequency(frequency, { ituRegion, countryCode, entityPref
     (!entityPrefix || Object.keys(segment.entities).length === 0 || segment.entities[entityPrefix]) &&
     (!countryCode || Object.keys(segment.countries).length === 0 || segment.countries[countryCode]) &&
     (!ituRegion || Object.keys(segment.regions).length === 0 || segment.regions[ituRegion])
-    ))
+  ))
+
   const sortedSegments = segments.sort((a, b) => {
     if (entityPrefix && !a.entities[entityPrefix] && b.entities[entityPrefix]) return 1
     if (entityPrefix && a.entities[entityPrefix] && !b.entities[entityPrefix]) return -1
@@ -181,5 +182,6 @@ export function modeForFrequency(frequency, { ituRegion, countryCode, entityPref
 
     return a.width - b.width
   })
+
   return sortedSegments[0]?.mode
 }
