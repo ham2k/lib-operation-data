@@ -12,6 +12,11 @@ describe('modeForFrequency', () => {
     expect(modeForFrequency(14140, { ituRegion: 2 })).toEqual('SSB')
   })
 
+  it('should handle different priorities', () => {
+    // ituRegion 2 should make CW be the match for 14074, but priority 100 for FT8 should make FT8 the match
+    expect(modeForFrequency(14074, { ituRegion: 2 })).toEqual('FT8')
+  })
+
   // The current bandplan data does not have any entity-specific segments
   // TODO: mock data for this test
   // it('should handle different bandplans for different entities', () => {

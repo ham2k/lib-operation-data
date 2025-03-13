@@ -171,6 +171,9 @@ export function modeForFrequency(frequency, { ituRegion, countryCode, entityPref
   ))
 
   const sortedSegments = segments.sort((a, b) => {
+    if ((a.priority ?? 0) < (b.priority ?? 0)) return 1
+    if ((a.priority ?? 0) > (b.priority ?? 0)) return -1
+
     if (entityPrefix && !a.entities[entityPrefix] && b.entities[entityPrefix]) return 1
     if (entityPrefix && a.entities[entityPrefix] && !b.entities[entityPrefix]) return -1
 
