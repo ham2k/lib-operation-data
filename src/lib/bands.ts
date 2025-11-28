@@ -32,22 +32,24 @@ export const BANDS = [
   '1mm',
   'submm',
   'other'
-]
+] as const
 
-export const HF_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m']
-export const VHF_BANDS = ['6m', '5m', '4m', '2m', '1.25m']
-export const UHF_BANDS = ['70cm', '33cm', '23cm', '13cm']
-export const SHF_BANDS = ['9cm', '6cm', '3cm', '1.25cm']
-export const EHF_BANDS = ['6mm', '4mm', '2mm', '2.5mm', '1mm', 'submm']
+export type Band = typeof BANDS[number]
 
-export const POPULAR_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m', '6m', '2m', '70cm']
-export const CONTEST_BANDS = ['160m', '80m', '40m', '20m', '15m', '10m']
+export const HF_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m'] as const
+export const VHF_BANDS = ['6m', '5m', '4m', '2m', '1.25m'] as const
+export const UHF_BANDS = ['70cm', '33cm', '23cm', '13cm'] as const
+export const SHF_BANDS = ['9cm', '6cm', '3cm', '1.25cm'] as const
+export const EHF_BANDS = ['6mm', '4mm', '2mm', '2.5mm', '1mm', 'submm'] as const
 
-export function bandForFrequency (freq) {
+export const POPULAR_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m', '6m', '2m', '70cm'] as const
+export const CONTEST_BANDS = ['160m', '80m', '40m', '20m', '15m', '10m'] as const
+
+export function bandForFrequency(freq: number): Band {
   return bandForExactFrequencyInMHz(freq) ?? bandForExactFrequencyInMHz(freq * 1000) ?? 'other'
 }
 
-function bandForExactFrequencyInMHz (freq) {
+function bandForExactFrequencyInMHz(freq: number): Band | undefined {
   if (freq >= 130 && freq <= 140) return '2190m'
   else if (freq >= 450 && freq <= 499) return '630m'
   else if (freq >= 500 && freq <= 505) return '560m'
@@ -83,7 +85,7 @@ function bandForExactFrequencyInMHz (freq) {
   else return undefined
 }
 
-export function frequencyForBand(band, mode) {
+export function frequencyForBand(band: Band, mode?: string): number | undefined {
   if (band === '2190m') return 135.7
   else if (band === '630m') return 472
   else if (band === '560m') return 501
@@ -169,3 +171,4 @@ export function frequencyForBand(band, mode) {
   else if (band === 'submm') return 300000000
   else return undefined
 }
+

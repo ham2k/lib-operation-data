@@ -1,10 +1,13 @@
 import BandPlans from '../data/bandPlans.json'
+import type { BandPlansData, SegmentWithMetadata, ModeForFrequencyOptions } from '../types'
 
 export const SUPER_MODES = [
   'CW',
   'PHONE',
   'DATA'
-]
+] as const
+
+export type SuperMode = typeof SUPER_MODES[number]
 
 export const MAIN_MODES = [
   'CW',
@@ -14,7 +17,9 @@ export const MAIN_MODES = [
   'FT8',
   'FT4',
   'RTTY'
-]
+] as const
+
+export type MainMode = typeof MAIN_MODES[number]
 
 export const POPULAR_MODES = [
   'CW',
@@ -42,7 +47,9 @@ export const POPULAR_MODES = [
   'PSK',
   'SSTV',
   'WSPR',
-]
+] as const
+
+export type PopularMode = typeof POPULAR_MODES[number]
 
 export const ADIF_MODES = [
   'AM',
@@ -91,9 +98,11 @@ export const ADIF_MODES = [
   'VOI',
   'WINMOR',
   'WSPR'
-]
+] as const
 
-export const ADIF_SUBMODES = {
+export type AdifMode = typeof ADIF_MODES[number]
+
+export const ADIF_SUBMODES: Record<string, readonly string[]> = {
   'CHIP': ['CHIP64', 'CHIP128'],
   'DIGITALVOICE': ['C4FM', 'DMR', 'DSTAR', 'FREEDV', 'M17'],
   'DOMINO': ['DOM-M', 'DOM4', 'DOM5', 'DOM8', 'DOM11', 'DOM16', 'DOM22', 'DOM44', 'DOM88', 'DOMINOEX', 'DOMINOF'],
@@ -116,18 +125,18 @@ export const ADIF_SUBMODES = {
   'THOR': ['THOR-M', 'THOR4', 'THOR5', 'THOR8', 'THOR11', 'THOR16', 'THOR22', 'THOR25X4', 'THOR50X1', 'THOR50X2', 'THOR100'],
   'THRB': ['THRBX', 'THRBX1', 'THRBX2', 'THRBX4', 'THROB1', 'THROB2', 'THROB4'],
   'TOR': ['AMTORFEC', 'GTOR', 'NAVTEX', 'SITORB']
-}
+} as const
 
-export const ADIF_MODE_FOR_SUBMODE = {}
+export const ADIF_MODE_FOR_SUBMODE: Record<string, string> = {}
 Object.keys(ADIF_SUBMODES).forEach(mode => {
   ADIF_SUBMODES[mode].forEach(submode => {
     ADIF_MODE_FOR_SUBMODE[submode] = mode
   })
 })
 
-export const ADIF_MODES_AND_SUBMODES = [... new Set(ADIF_MODES.concat(Object.values(ADIF_SUBMODES)).flat())].sort()
+export const ADIF_MODES_AND_SUBMODES: readonly string[] = [...new Set([...ADIF_MODES, ...Object.values(ADIF_SUBMODES).flat()])].sort()
 
-export function adifModeAndSubmodeForMode(mode) {
+export function adifModeAndSubmodeForMode(mode: string): string[] {
   if (ADIF_MODE_FOR_SUBMODE[mode]) {
     return [ADIF_MODE_FOR_SUBMODE[mode], mode]
   } else {
@@ -135,7 +144,7 @@ export function adifModeAndSubmodeForMode(mode) {
   }
 }
 
-export function superModeForMode(mode) {
+export function superModeForMode(mode: string): SuperMode {
   if (ADIF_MODE_FOR_SUBMODE[mode]) mode = ADIF_MODE_FOR_SUBMODE[mode]
 
   if (mode === 'CW') {
@@ -147,27 +156,38 @@ export function superModeForMode(mode) {
   }
 }
 
-const AllSegments = Object.keys(BandPlans.bands).reduce((segments, band) => {
-  return segments.concat(
-    BandPlans.bands[band].segments.map(segment => (
-      {
-        ...segment,
-        band,
-        width: segment.mhz[1] - segment.mhz[0],
-        regions: (segment.regions || []).reduce((regions, region) => { regions[region] = true; return regions }, {}),
-        entities: (segment.entities || []).reduce((entities, entity) => { entities[entity] = true; return entities }, {}),
-        countries: (segment.countries || []).reduce((countries, country) => { countries[country] = true; return countries }, {}),
-      }
-    ))
-  )
-}, [])
+const bandPlansData = BandPlans as unknown as BandPlansData
 
-export function modeForFrequency(frequency, { ituRegion, countryCode, entityPrefix } = {}) {
+const AllSegments: SegmentWithMetadata[] = Object.keys(bandPlansData.bands).reduce((segments, band) => {
+  return segments.concat(
+    bandPlansData.bands[band].segments.map(segment => {
+      const mhz = Array.isArray(segment.mhz) && segment.mhz.length >= 2
+        ? [segment.mhz[0], segment.mhz[1]] as [number, number]
+        : [0, 0] as [number, number]
+      return {
+        name: segment.name,
+        mode: segment.mode,
+        submode: segment.submode,
+        priority: segment.priority,
+        mhz,
+        band,
+        width: mhz[1] - mhz[0],
+        regions: (segment.regions || []).reduce((regions: Record<string, boolean>, region) => { regions[region.toString()] = true; return regions }, {}),
+        entities: (segment.entities || []).reduce((entities: Record<string, boolean>, entity) => { entities[entity] = true; return entities }, {}),
+        countries: (segment.countries || []).reduce((countries: Record<string, boolean>, country) => { countries[country] = true; return countries }, {}),
+      } as SegmentWithMetadata
+    })
+  )
+}, [] as SegmentWithMetadata[])
+
+export function modeForFrequency(frequency: number, options: ModeForFrequencyOptions = {}): string | null | undefined {
+  const { ituRegion, countryCode, entityPrefix } = options
+
   const segments = AllSegments.filter(segment => (
     (segment.mhz[0] <= frequency && segment.mhz[1] >= frequency) &&
     (!entityPrefix || Object.keys(segment.entities).length === 0 || segment.entities[entityPrefix]) &&
     (!countryCode || Object.keys(segment.countries).length === 0 || segment.countries[countryCode]) &&
-    (!ituRegion || Object.keys(segment.regions).length === 0 || segment.regions[ituRegion])
+    (!ituRegion || Object.keys(segment.regions).length === 0 || segment.regions[ituRegion.toString()])
   ))
 
   const sortedSegments = segments.sort((a, b) => {
@@ -180,11 +200,12 @@ export function modeForFrequency(frequency, { ituRegion, countryCode, entityPref
     if (countryCode && !a.countries[countryCode] && b.countries[countryCode]) return 1
     if (countryCode && a.countries[countryCode] && !b.countries[countryCode]) return -1
 
-    if (ituRegion && !a.regions[ituRegion] && b.regions[ituRegion]) return 1
-    if (ituRegion && a.regions[ituRegion] && !b.regions[ituRegion]) return -1
+    if (ituRegion && !a.regions[ituRegion.toString()] && b.regions[ituRegion.toString()]) return 1
+    if (ituRegion && a.regions[ituRegion.toString()] && !b.regions[ituRegion.toString()]) return -1
 
     return a.width - b.width
   })
 
   return sortedSegments[0]?.mode
 }
+
