@@ -3,6 +3,7 @@
     { "url": "https://www.iaru-r2.org/en/reference/band-plans/" },
     { "url": "https://www.arrl.org/band-plan" },
     { "url": "https://www.arrl.org/news/view/updated-arrl-us-amateur-radio-bands-charts-now-available" }
+    { "url": "https://rsgb.org/main/operating/band-plans/vhf-uhf/70mhz-band/"}
   ],
   "bands": {
     "160m": {
@@ -136,6 +137,16 @@
         { "name": "FT4", "mhz": [50318, 50321], "mode": "FT4", "priority": 100 },
         { "name": "FT8", "mhz": [50323, 50326], "mode": "FT8", "priority": 100 },
         { "name": "Australia", "mhz": [50000, 54000], "mode": null, "countries": ["au"] }
+      ]
+    },
+    "4m": {
+      "mhz": [70000, 70500],
+      "segments": [
+        { "name": "Phone", "mhz": [70100, 70294], "mode": "SSB", "submode": "USB" },
+        { "name": "FM", "mhz": [70294, 70500], "mode": "FM" },
+        { "name": "AM", "mhz": [70257, 70263], "mode": "AM", "priority": 100 },
+        { "name": "FT8", "mhz": [70100, 70103], "mode": "FT8", "priority": 100 },
+        { "name": "FT8", "mhz": [70154, 70157], "mode": "FT8", "priority": 100 }
       ]
     },
     "2m": {
