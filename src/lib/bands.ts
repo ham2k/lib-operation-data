@@ -1,3 +1,40 @@
+export const EXTENDED_BANDS = [  // Includes 11m
+  '2190m',
+  '630m',
+  '560m',
+  '160m',
+  '80m',
+  '60m',
+  '40m',
+  '30m',
+  '20m',
+  '17m',
+  '15m',
+  '12m',
+  '11m',
+  '10m',
+  '6m',
+  '5m',
+  '4m',
+  '2m',
+  '1.25m',
+  '70cm',
+  '33cm',
+  '23cm',
+  '13cm',
+  '9cm',
+  '6cm',
+  '3cm',
+  '1.25cm',
+  '6mm',
+  '4mm',
+  '2.5mm',
+  '2mm',
+  '1mm',
+  'submm',
+  'other'
+] as const
+
 export const BANDS = [
   '2190m',
   '630m',
@@ -34,7 +71,7 @@ export const BANDS = [
   'other'
 ] as const
 
-export type Band = typeof BANDS[number]
+export type Band = typeof EXTENDED_BANDS[number]
 
 export const HF_BANDS = ['160m', '80m', '60m', '40m', '30m', '20m', '17m', '15m', '12m', '10m'] as const
 export const VHF_BANDS = ['6m', '5m', '4m', '2m', '1.25m'] as const
@@ -62,6 +99,7 @@ function bandForExactFrequencyInMHz(freq: number): Band | undefined {
   else if (freq >= 18000 && freq <= 18200) return '17m'
   else if (freq >= 20900 && freq <= 21600) return '15m'
   else if (freq >= 24500 && freq <= 25200) return '12m'
+  else if (freq >= 26000 && freq <= 27500) return '11m'
   else if (freq >= 27900 && freq <= 30000) return '10m'
   else if (freq >= 50000 && freq <= 54000) return '6m'
   else if (freq >= 54001 && freq <= 69999) return '5m'
@@ -137,6 +175,9 @@ export function frequencyForBand(band: Band, mode?: string): number | undefined 
     else if (mode === 'FT8') return 24915
     else if (mode === 'FT4') return 24919
     else return 24890
+  }
+  else if (band === '11m') {
+    return 26965
   }
   else if (band === '10m') {
     if (mode === 'SSB' || mode === 'USB') return 28300

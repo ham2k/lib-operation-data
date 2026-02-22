@@ -1,15 +1,15 @@
 import BandPlans from '../data/bandPlans.json'
 import type { BandPlansData, SegmentWithMetadata, ModeForFrequencyOptions } from '../types'
 
-export const SUPER_MODES = [
+export const SUPER_MODES: readonly string[] = [
   'CW',
   'PHONE',
   'DATA'
 ] as const
 
-export type SuperMode = typeof SUPER_MODES[number]
+export type SuperMode = 'CW' | 'PHONE' | 'DATA'
 
-export const MAIN_MODES = [
+export const MAIN_MODES: readonly string[] = [
   'CW',
   'SSB',
   'AM',
@@ -19,9 +19,7 @@ export const MAIN_MODES = [
   'RTTY'
 ] as const
 
-export type MainMode = typeof MAIN_MODES[number]
-
-export const POPULAR_MODES = [
+export const POPULAR_MODES: readonly string[] = [
   'CW',
   'SSB',
   'USB',
@@ -30,6 +28,7 @@ export const POPULAR_MODES = [
   'AM',
   'FT8',
   'FT4',
+  'FT2',
   'RTTY',
   'DIGITALVOICE',
   'C4FM',
@@ -49,9 +48,7 @@ export const POPULAR_MODES = [
   'WSPR',
 ] as const
 
-export type PopularMode = typeof POPULAR_MODES[number]
-
-export const ADIF_MODES = [
+export const ADIF_MODES: readonly string[] = [
   'AM',
   'ARDOP',
   'ATV',
@@ -99,8 +96,6 @@ export const ADIF_MODES = [
   'WINMOR',
   'WSPR'
 ] as const
-
-export type AdifMode = typeof ADIF_MODES[number]
 
 export const ADIF_SUBMODES: Record<string, readonly string[]> = {
   'CHIP': ['CHIP64', 'CHIP128'],

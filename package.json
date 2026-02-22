@@ -1,13 +1,17 @@
 {
   "name": "@ham2k/lib-operation-data",
-  "version": "0.10.0",
+  "version": "0.10.4",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "devDependencies": {
